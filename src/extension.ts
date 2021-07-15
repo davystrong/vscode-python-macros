@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 			const selectedText = document.getText(selection);
 
-			const ipython = cp.spawn('ipython', ['-c', selectedText]);
+			const ipython = cp.spawn('ipython', ['--no-pprint', '-c', ' ' + selectedText + ' ']);
 
 			let output = '';
 			let error = '';
