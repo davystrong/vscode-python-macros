@@ -14,11 +14,13 @@ class Operation {
 }
 
 class IPython {
-	_ipython = cp.spawn('ipython', ['--no-pprint']);
+	_ipython: cp.ChildProcessWithoutNullStreams;
 	_operations = new Subject<Operation>();
 	_outputs = new Subject<string>();
 
-	constructor() {
+	constructor(command: string, args: string[]) {
+		this._ipython = cp.spawn(command, args);
+
 		let currentOutput = '';
 		let currentError = '';
 
@@ -77,7 +79,8 @@ class IPython {
 let ipython: IPython;
 
 export function activate(context: vscode.ExtensionContext) {
-	ipython = new IPython();
+	const config = vscode.workspace.getConfiguration('python-macros');
+	ipython = new IPython(config['ipythonCommand'], config['ipythonArguments']);
 
 	let disposable = vscode.commands.registerCommand('python-macros.runCode', () => {
 		const editor = vscode.window.activeTextEditor;

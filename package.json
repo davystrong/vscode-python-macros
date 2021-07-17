@@ -3,7 +3,7 @@
 	"displayName": "Python Macros",
 	"publisher": "davystrong",
 	"description": "",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"engines": {
 		"vscode": "^1.58.0"
 	},
@@ -28,6 +28,26 @@
 					"group": "PythonMacros@1"
 				}
 			]
+		},
+		"configuration": {
+			"title": "Python Macros",
+			"properties": {
+				"python-macros.ipythonCommand": {
+					"type": "string",
+					"default": "ipython",
+					"description": "Command used to launch IPython."
+				},
+				"python-macros.ipythonArguments": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [
+						"--no-pprint"
+					],
+					"description": "Arguments passed to IPython."
+				}
+			}
 		}
 	},
 	"scripts": {
