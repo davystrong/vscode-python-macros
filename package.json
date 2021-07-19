@@ -43,7 +43,9 @@
 						"type": "string"
 					},
 					"default": [
-						"--no-pprint"
+						"--no-pprint",
+						"--no-banner",
+						"--quick"
 					],
 					"description": "Arguments passed to IPython."
 				}
